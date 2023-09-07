@@ -21,6 +21,21 @@ app.use('/graphql', graphqlHTTP({
     graphiql: true
 }))
 
+app.get("/", (req, res) => {
+    const htmlResponse = `
+        <html>
+            <head>
+                <title>Readify server</title>
+            </head>
+            <body>
+                <h1>Readify server</h1>
+            </body>
+        </html>
+    `;
+
+    res.send(htmlResponse);
+})
+
 app.listen(PORT, () => {
     console.log(`Listening to port ${PORT}`);
 })
