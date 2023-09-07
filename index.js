@@ -9,6 +9,8 @@ require('dotenv').config();
 const app = express();
 app.use(cors());
 
+const PORT = process.env.PORT || 4000;
+
 mongoose.connect(`mongodb+srv://neuralpink:${process.env.MONGODB_PASSWORD}@cluster0.eiebhtt.mongodb.net/?retryWrites=true&w=majority`);
 mongoose.connection.once('open', () => {
     console.log('connected to the database');
@@ -19,6 +21,6 @@ app.use('/graphql', graphqlHTTP({
     graphiql: true
 }))
 
-app.listen(4000, () => {
-    console.log(`Listening to port 4000`);
+app.listen(PORT, () => {
+    console.log(`Listening to port ${PORT}`);
 })
